@@ -1,9 +1,9 @@
 services:
     web:
-        container_name: web
+        container_name: store_api
         image: nginx:alpine  # Use the Nginx image
         ports:
-            - "9000:80"  # Map port 8080 on the host to port 80 inside the container
+            - "8080:80"  # Map port 8080 on the host to port 80 inside the container
         volumes:
             - ./:/var/www  # Mount the Laravel application directory
             - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Use our Nginx config
