@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\CategoryController;
@@ -18,3 +19,5 @@ Route::resource('/categories', CategoryController::class);
 Route::resource('/products', ProductController::class);
 
 Route::resource('/comments', CommentController::class);
+
+Route::resource('/images', ImageController::class);
