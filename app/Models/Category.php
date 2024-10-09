@@ -9,7 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Category extends Model
 {
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
-    use HasFactory, HasApiTokens;
+    use HasFactory;
 
     protected $fillable = [
         'name',
