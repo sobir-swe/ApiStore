@@ -13,12 +13,6 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = Category::factory(10)->create();
-
-        $categories->each(function ($category) {
-            $category->update([
-                'parent_id' => $category->id,
-            ]);
-        });
+        Category::factory(10)->create();
     }
 }

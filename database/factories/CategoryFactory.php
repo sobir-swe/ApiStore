@@ -19,10 +19,8 @@ class CategoryFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
-            'image' => null,
+            'image' => $this->faker->image(public_path('storage/images'), 640, 480, null, false),
             'parent_id' => null,
-            'created_at' => now(),
-            'updated_at' => now(),
         ];
     }
 }
