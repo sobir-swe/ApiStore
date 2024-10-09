@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): \Illuminate\Database\Eloquent\Collection
     {
-        return Category::all();
+        return Comment::all();
     }
 
     /**
@@ -21,18 +21,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request): \Illuminate\Http\JsonResponse
     {
-        // Create a new category without validation
-        $category = Category::query()->create([
-            'name' => $request['name'],
-            'description' => $request['description'],
-            'image' => $request['image'],
-            'parent_id' => $request['parent_id'],
+        $comment = Comment::query()->create([
+            'comment' => $request['comment'],
+            'user_id' => $request['user_id'],
+            'product_id' => $request['product_id'],
         ]);
 
         return response()->json([
-            'message' => 'Category created successfully',
+            'message' => 'Comment created successfully',
             'status' => 'success',
-            'category' => $category
+            'category' => $comment
         ]);
     }
 
@@ -41,10 +39,9 @@ class CategoryController extends Controller
      */
     public function show(string $id): \Illuminate\Http\JsonResponse
     {
-        // Fetch the category by id
-        $category = Category::query()->findOrFail($id);
+        $comment = Comment::query()->findOrFail($id);
 
-        return response()->json($category);
+        return response()->json($comment);
     }
 
     /**
@@ -52,20 +49,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id): \Illuminate\Http\JsonResponse
     {
-        // Fetch the category by id
-        $category = Category::query()->findOrFail($id);
-
-        // Update the category without validation
-        $category->update([
-            'name' => $request['name'],
-            'description' => $request['description'],
-            'image' => $request['image'],
-            'parent_id' => $request['parent_id'],
+        $comment = Comment::query()->findOrFail($id);
+        $comment->update([
+            'comment' => $request['comment'],
+            'user_id' => $request['user_id'],
+            'product_id' => $request['product_id'],
         ]);
 
         return response()->json([
-            'message' => 'Category updated successfully',
-            'category' => $category
+            'message' => 'Comment updated successfully',
+            'category' => $comment
         ]);
     }
 
@@ -75,11 +68,11 @@ class CategoryController extends Controller
     public function destroy(string $id): \Illuminate\Http\JsonResponse
     {
         // Fetch the category by id
-        $category = Category::query()->findOrFail($id);
+        $comment = Comment::query()->findOrFail($id);
 
         // Delete the category
-        $category->delete();
+        $comment->delete();
 
-        return response()->json(['message' => 'Category deleted successfully']);
+        return response()->json(['message' => 'Comment deleted successfully']);
     }
 }
