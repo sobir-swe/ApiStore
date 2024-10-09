@@ -20,4 +20,9 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function order(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }

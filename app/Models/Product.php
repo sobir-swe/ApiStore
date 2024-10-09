@@ -26,4 +26,14 @@ class Product extends Model
     {
         return $this->hasMany(Image::class);
     }
+
+    public function order(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function orderProducts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(OrderProduct::class);
+    }
 }

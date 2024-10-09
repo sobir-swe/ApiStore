@@ -25,3 +25,5 @@ RUN composer install
 
 # Set permissions for storage and bootstrap/cache
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+RUN chown -R sobirjon:sobirjon ~/My_Projects/ApiStore/
+
