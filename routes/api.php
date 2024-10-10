@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\OrderController;
@@ -22,10 +23,14 @@ Route::resource('/categories', CategoryController::class)
 Route::resource('/products', ProductController::class)
 ->middleware('auth:sanctum');
 
-Route::resource('/comments', CommentController::class);
+Route::resource('/comments', CommentController::class)
+->middleware('auth:sanctum');
 
 Route::resource('/images', ImageController::class)
 ->middleware('auth:sanctum');
 
 Route::resource('/orders', OrderController::class)
+->middleware('auth:sanctum');
+
+Route::resource('/carts', CartController::class)
 ->middleware('auth:sanctum');
