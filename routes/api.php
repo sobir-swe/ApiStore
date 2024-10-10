@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\ImageController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\OrderProductController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\CategoryController;
@@ -30,6 +31,9 @@ Route::resource('/images', ImageController::class)
 ->middleware('auth:sanctum');
 
 Route::resource('/orders', OrderController::class)
+->middleware('auth:sanctum');
+
+Route::resource('/order_products', OrderProductController::class)
 ->middleware('auth:sanctum');
 
 Route::resource('/carts', CartController::class)
